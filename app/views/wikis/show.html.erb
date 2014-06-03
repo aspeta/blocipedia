@@ -1,0 +1,10 @@
+<div class="media-body">
+  <h4 class="media-heading">
+    <%= @wiki.name %>
+  </h4>
+  <small>
+
+    <%= @wiki.description %>
+  </small>
+  <%= link_to "Edit", edit_wiki_path(@wiki.id) %>
+</div>

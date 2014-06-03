@@ -15,7 +15,11 @@ end
 
 gem 'devise'
 
+gem 'pundit'
+
 gem 'figaro'
+
+gem 'redcarpet'
 
 gem 'bootstrap-sass', '~> 3.1.1'
 # Use SCSS for stylesheets

@@ -1,0 +1,31 @@
+<h1 center>My Wikis</h1>
+<ul style="list-style-type:none;">
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+     <th>Programming</th>
+     <th>Edit</th>
+     <th>Delete</th>
+    </tr>
+  </head>
+  <div class="col-md-8">
+    <% @wikis.each do |wiki| %>
+      <tbody> 
+        <tr>  
+            <li>
+                  <td><%= link_to wiki.name, wiki %></td>
+                  <td><%= link_to "Edit", edit_wiki_path(wiki.id) %></td>
+                  <td><%= link_to "Delete", edit_wiki_path(wiki.id) %></td>
+            </li>
+        </tr>
+      </tbody> 
+    <% end %>
+  </div>
+</table>
+</ul>
+  <div class="col-md-4">
+    <% if policy(Wiki.new).create? %>
+      <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+

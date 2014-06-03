@@ -1,5 +1,12 @@
 Blocipedia::Application.routes.draw do
+ # get "wikis/index"
+ # get "wikis/new"
+ # get "wikis/show"
+ # get "wikis/edit"
   devise_for :users
+ 
+  resources :wikis
+
   get "welcome/index"
   get "welcome/about"
 
