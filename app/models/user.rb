@@ -8,4 +8,16 @@ class User < ActiveRecord::Base
   def role?(base_role)
   role == base_role.to_s
   end
+  def admin?
+   role == 'admin'
+  end
+ 
+  def premium?
+    role == 'premium'
+  end
+  
+  def standard?
+    role == 'standard'
+  end
+  
 end

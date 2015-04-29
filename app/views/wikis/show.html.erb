@@ -6,5 +6,7 @@
 
     <%= @wiki.description %>
   </small>
+  <% if policy(@wiki).edit? %>
   <%= link_to "Edit", edit_wiki_path(@wiki.id) %>
+  <% end %>
 </div>

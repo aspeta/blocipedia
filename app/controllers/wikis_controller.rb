@@ -1,10 +1,11 @@
 class WikisController < ApplicationController
   def index
     @wikis = Wiki.all
-  #  authorize @wikis
+    authorize @wikis
   end
   def create
      @wiki = Wiki.create(params.require(:wiki).permit(:name,:description))
+    authorize @wiki
     if @wiki.save
       flash[:success] = "Wiki was added successfully"
     else  
@@ -19,7 +20,7 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
- #   authorize @wiki
+    authorize @wiki
     if @wiki.update_attributes(wiki_params)
       redirect_to @wiki
     else
@@ -45,7 +46,7 @@ class WikisController < ApplicationController
 
   def edit
    @wiki = Wiki.find(params[:id])
- #  authorize @wiki
+   authorize @wiki
   end
     private
 
