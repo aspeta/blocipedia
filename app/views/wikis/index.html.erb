@@ -14,8 +14,15 @@
         <tr>  
             <li>
                   <td><%= link_to wiki.name, wiki %></td>
+              <% if policy(Wiki.new).create? %>
                   <td><%= link_to "Edit", edit_wiki_path(wiki.id) %></td>
                   <td><%= link_to "Delete", edit_wiki_path(wiki.id) %></td>
+              <% else %>
+              <td><%= 'Edit' %></td>
+              <td><%= 'Delete' %></td>
+              <% end %>
+                     
+            
             </li>
         </tr>
       </tbody> 

@@ -12,12 +12,14 @@ end
 group :development do
   gem 'sqlite3'
 end
-
+# for integrating login use devise
 gem 'devise'
-
+# for user authorization and roles use pundit
 gem 'pundit'
-
+# for seeding the database use faker
 gem 'faker'
+# for payment processing use stripe
+gem 'stripe'
 
 gem 'figaro'
 
