@@ -10,7 +10,10 @@ def create
     :email => 'example@stripe.com',
     :card  => params[:stripeToken]
   )
+    current_user.update_attribute(:role, "premium")
 
+   
+  
   charge = Stripe::Charge.create(
     :customer    => customer.id,
     :amount      => @amount,
