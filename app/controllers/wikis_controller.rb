@@ -4,7 +4,10 @@ class WikisController < ApplicationController
     authorize @wikis
   end
   def create
-     @wiki = Wiki.create(params.require(:wiki).permit(:name,:description))
+    #@wiki = Wiki.new(params.require(:wiki).permit(:name,:description))
+    #@wiki.user_id= current_user.id
+    
+    @wiki = current_user.wikis.build( params.require(:wiki).permit(:name,:description) )
     authorize @wiki
     if @wiki.save
       flash[:success] = "Wiki was added successfully"
