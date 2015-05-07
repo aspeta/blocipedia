@@ -1,13 +1,14 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all
+   # @wikis = Wiki.all
+    @wikis = Wiki.visible_to(current_user)
     authorize @wikis
   end
   def create
     #@wiki = Wiki.new(params.require(:wiki).permit(:name,:description))
     #@wiki.user_id= current_user.id
     
-    @wiki = current_user.wikis.build( params.require(:wiki).permit(:name,:description) )
+    @wiki = current_user.wikis.build( params.require(:wiki).permit(:name,:description,:public) )
     authorize @wiki
     if @wiki.save
       flash[:success] = "Wiki was added successfully"
@@ -54,6 +55,6 @@ class WikisController < ApplicationController
     private
 
   def wiki_params
-    params.require(:wiki).permit(:description)#, :user_id)
+    params.require(:wiki).permit(:description, :public)#, :user_id)
   end
 end

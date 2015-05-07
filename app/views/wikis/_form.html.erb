@@ -1,11 +1,13 @@
 <h1>Wikis</h1>
-<%= form_for [wiki], remote: true do |f| %>
+
+ <%= form_for [wiki], remote: true do |f| %>
 <%= form_group_tag(wiki[:description]) do %>  
     <div class="form-group">
-      <%= f.text_area :description, rows: 25, cols: 120, class: 'form-control', placeholder: "Enter Description" %>
+    <%= f.text_area :description, rows: 25, cols: 120, class: 'form-control', placeholder: "Enter Description" %>
+    <% end %>
     </div>
-  <% end %>
+
    <div class="form-group">
     <%= f.submit "Save", class: 'btn btn-primary' %>
   </div>
-<% end %>
+ <% end %>

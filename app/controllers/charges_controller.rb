@@ -10,7 +10,8 @@ def create
     :email => 'example@stripe.com',
     :card  => params[:stripeToken]
   )
-    current_user.update_attribute(:role, "premium")
+  
+  current_user.update_attribute(:role, "premium")
 
    
   

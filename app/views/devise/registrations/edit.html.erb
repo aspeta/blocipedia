@@ -25,5 +25,14 @@
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
+<h3> Upgrade/Downgrade my membership?</h3>
+<div>
+<% if current_user.role == "admin" %>
+          </br><strong>Admin</strong>
+        <% elsif current_user.role == "premium" %>
+         </br><strong>Congratulation! You are a Premium Member. </strong> Would you like to downgrade your membership? <%= link_to "Click here to down grade", new_charge_path %>
+        <% else %>
+    </br><strong>You are a Standard Member. </strong><%= link_to "Pay $15 to Upgrade to Premium?", new_charge_path %>
+        <% end %>
+</div>
 <%= link_to "Back", :back %>
