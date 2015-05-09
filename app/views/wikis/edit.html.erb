@@ -21,9 +21,10 @@
       </div>
       <% if current_user.role == 'admin' || current_user.role == 'premium' %>
       <div class="form-group">   
-          <%= f.label :public, class: 'checkbox' do %>
+          <%= f.label :public, class: 'checkbox' do %> 
           <%= f.check_box :public %> Public wiki
           <%end %>
+        
        </div> 
       <%end %>
       <%= f.submit "Save", class: 'btn btn-primary' , onclick: "prep()" %>
