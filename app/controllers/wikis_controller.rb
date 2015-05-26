@@ -1,8 +1,9 @@
 class WikisController < ApplicationController
   def index
    # @wikis = Wiki.all
-    @wikis = Wiki.visible_to(current_user)
-    authorize @wikis
+   #@wikis = Wiki.visible_to(current_user)
+    @wikis = policy_scope(Wiki)
+ #   authorize @wikis
   end
   def create
     #@wiki = Wiki.new(params.require(:wiki).permit(:name,:description))
@@ -46,6 +47,7 @@ class WikisController < ApplicationController
   def show
    @wiki = Wiki.find(params[:id])
 #  authorize @wiki
+    
   end
 
   def edit

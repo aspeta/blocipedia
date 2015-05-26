@@ -5,7 +5,10 @@ Blocipedia::Application.routes.draw do
  # get "wikis/edit"
   devise_for :users
  
-  resources :wikis
+  resources :wikis do
+    resources :collaborators, only: [:create, :destroy, :index]
+  end
+
   resources :charges, only: [:new, :create]
   get "welcome/index"
   get "welcome/about"

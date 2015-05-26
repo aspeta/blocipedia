@@ -7,6 +7,6 @@
     <%= markdown @wiki.description %>
   </small>
   <% if policy(@wiki).edit? %>
-  <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
+  <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-primary' %>
   <% end %>
 </div>

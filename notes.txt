@@ -1,0 +1,73 @@
+Given user has a premmium account
+And user has no private wikis
+When they choose to Downgrade
+Then the user should be changed to standard account
+
+Given user has a premmium account
+And user has one or more private wikis
+When they choose to Downgrade
+Then I should see a warning that private wiki will become public
+When I select "OK"
+Then all private wikis should be to public
+And the user should be changed to standard account
+
+
+----
+@user = current_user
+=> User instance
+@user.wikis.all
+=> [colleciton of Wikis]
+@user.wikis.count
+=> nnn
+@user.wikis.all
+=> Wiki.where( user_id: @user.id)
+@user.wikis.publics.all
+=> Wiki.where( user_id: @user.id, publi: true)
+Wiki.publics.all
+
+
+======
+Collaborators
+
+User
+  has_many :wiki
+  
+Wiki
+  belongs_to :user # "owner"
+  has_many :collaborators, through: :collaboration, source: :user
+  
+
+Collaboration
+  belongs_to :user
+  belongs_to :wiki
+  
+  
+@user.wikis
+wiki = @user.wikis.first
+wiki.user
+=> @user
+wiki.collaborators
+=> [collection User that have Collaboration.where(wiki_id: wiki.id)]
+
+
+=======
+Wiki "asdf"
+
+User 1            [Add]     POST /wikis/23/collaborators?user_id=1    CollaboratorsController#create
+User 2            [Add]
+User 3            [Remove]  DELETE /wikis/23/collaborators/33        CollaboratorsController#destray
+
+
+
+= link_to "Add", wiki_collaborations_path( wiki, user_id: user.id) , method: :post
+
+routes.rb
+  resources :wiki do 
+    resources :collaborators
+  end
+  
+ $ rake routes
+  
+  
+
+
